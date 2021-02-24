@@ -220,6 +220,9 @@
                     <li class="nav-item sp">
                         <a href="submit-property.html" class="nav-link link-color"><i class="fa fa-plus"></i> Submit Property</a>
                     </li>
+                    <li class="nav-item sp">
+                        <a href="{{route('login')}}" class="nav-link link-color"><i class="fa fa-key"></i> Sign in</a>
+                    </li>
                 </ul>
             </div>
         </nav>
