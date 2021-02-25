@@ -57,7 +57,7 @@ export default {
     },
     methods: {
         updateUser: function (){
-            console.log(this.userData.id)
+            console.log(this.data)
         }
     },
     mounted() {

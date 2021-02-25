@@ -1938,7 +1938,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     updateUser: function updateUser() {
-      console.log(this.userData.id);
+      console.log(this.data);
     }
   },
   mounted: function mounted() {}
