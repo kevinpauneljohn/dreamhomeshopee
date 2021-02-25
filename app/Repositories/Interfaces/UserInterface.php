@@ -15,4 +15,11 @@ interface UserInterface
      * @return mixed
      */
     public function create(User $user, array $data);
+
+    /**
+     * get a specified user
+     * @param $user_id
+     * @return mixed
+     */
+    public function getUser($user_id);
 }

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-    <title>Neer - Real Estate HTML Template</title>
+    <title>@yield('title')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- External CSS libraries -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/animate.min.css">
@@ -35,6 +35,8 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link rel="stylesheet" type="text/css" href="css/ie10-viewport-bug-workaround.css">
 
+    @yield('css')
+
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script  src="js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script  src="js/ie-emulation-modes-warning.js"></script>
@@ -64,8 +66,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto d-lg-none d-xl-none">
-                    <li class="nav-item dropdown active">
-                        <a href="dashboard.html" class="nav-link">Dashboard</a>
+                    <li class="nav-item dropdown @if(url()->current() === route('dashboard'))active @endif">
+                        <a @if(url()->current() !== route('dashboard')) href="{{route('dashboard')}}" @endif class="nav-link">Dashboard</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a href="messages.html" class="nav-link">Messages</a>
@@ -86,7 +88,7 @@
                         <a href="submit-property.html" class="nav-link">Submit Property</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a href="my-profile.html" class="nav-link">My Profile</a>
+                        <a href="{{route('my.profile')}}" class="nav-link">My Profile</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a href="index.html" class="nav-link">Logout</a>
@@ -104,7 +106,7 @@
                                     <a class="dropdown-item" href="dashboard.html">Dashboard</a>
                                     <a class="dropdown-item" href="messages.html">Messages</a>
                                     <a class="dropdown-item" href="bookings.html">Bookings</a>
-                                    <a class="dropdown-item" href="my-profile.html">My profile</a>
+                                    <a class="dropdown-item" href="{{route('my.profile')}}">My profile</a>
                                     <a class="dropdown-item" href="index.html">Logout</a>
                                 </div>
                             </div>
@@ -128,7 +130,7 @@
                 <div class="dashboard-inner">
                     <h4>Main</h4>
                     <ul>
-                        <li class="active"><a href="dashboard.html"><i class="flaticon-dashboard"></i> Dashboard</a></li>
+                        <li @if(url()->current() === route('dashboard')) class="active" @endif ><a  @if(url()->current() !== route('dashboard')) href="{{route('dashboard')}}" @endif><i class="flaticon-dashboard"></i> Dashboard</a></li>
                         <li><a href="messages.html"><i class="flaticon-mail"></i> Messages <span class="nav-tag">6</span></a></li>
                         <li><a href="bookings.html"><i class="flaticon-calendar"></i> Bookings</a></li>
                     </ul>
@@ -141,344 +143,13 @@
                     </ul>
                     <h4>Account</h4>
                     <ul>
-                        <li><a href="my-profile.html"><i class="flaticon-male"></i>My Profile</a></li>
-                        <li><a href="index.html"><i class="flaticon-logout"></i>Logout</a></li>
+                        <li @if(url()->current() === route('my.profile')) class="active" @endif><a @if(url()->current() !== route('my.profile'))href="{{route('my.profile')}}" @endif><i class="flaticon-male"></i>My Profile</a></li>
+                        <li><a href="{{route('logout')}}"><i class="flaticon-logout"></i>Logout</a></li>
                     </ul>
                 </div>
             </div>
             <div class="dashboard-content">
-                <div class="dashboard-header clearfix">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-5"><h4>Hello , Tom</h4></div>
-                        <div class="col-sm-12 col-md-7">
-                            <div class="breadcrumb-nav">
-                                <ul>
-                                    <li>
-                                        <a href="index.html">Index</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="active">Dashboard</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="alert alert-success alert-2" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <strong>Your listing</strong> YOUR LISTING HAS BEEN APPROVED!
-                </div>
-                <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-6">
-                        <div class="ui-item bg-success">
-                            <div class="left">
-                                <h4>242</h4>
-                                <p>Active Listings</p>
-                            </div>
-                            <div class="right">
-                                <i class="fa fa-map-marker"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6">
-                        <div class="ui-item bg-warning">
-                            <div class="left">
-                                <h4>1242</h4>
-                                <p>Listing Views</p>
-                            </div>
-                            <div class="right">
-                                <i class="fa fa-eye"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6">
-                        <div class="ui-item bg-active">
-                            <div class="left">
-                                <h4>786</h4>
-                                <p>Reviews</p>
-                            </div>
-                            <div class="right">
-                                <i class="fa fa-comments-o"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6">
-                        <div class="ui-item bg-dark">
-                            <div class="left">
-                                <h4>42</h4>
-                                <p>Bookmarked</p>
-                            </div>
-                            <div class="right">
-                                <i class="fa fa-heart-o"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6 col-md-6">
-                        <div class="dashboard-list">
-                            <div class="dashboard-message bdr clearfix ">
-                                <div class="tab-box-2">
-                                    <div class="clearfix mb-30 comments-tr">
-                                        <span>Comments</span>
-                                        <ul class="nav nav-pills float-right" id="pills-tab" role="tablist">
-                                            <li class="nav-item">
-                                                <a class="nav-link active show" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Pending</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="true">Approved</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="tab-content" id="pills-tabContent">
-                                        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                                            <div class="comment">
-                                                <div class="comment-author">
-                                                    <a href="#">
-                                                        <img src="http://placehold.it/60x60" alt="comments-user">
-                                                    </a>
-                                                </div>
-                                                <div class="comment-content">
-                                                    <div class="comment-meta">
-                                                        <h5>Maikel Alisa</h5>
-                                                        <div class="comment-meta">
-                                                            8:42 PM 1/28/2017<a href="#">Reply</a>
-                                                        </div>
-                                                    </div>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tincidunt aliquam. Aliquam gravida massa at sem </p>
-                                                </div>
-                                            </div>
-                                            <div class="comment">
-                                                <div class="comment-author">
-                                                    <a href="#"><img src="http://placehold.it/60x60" alt="comments-user"></a>
-                                                </div>
-                                                <div class="comment-content">
-                                                    <div class="comment-meta">
-                                                        <h5>
-                                                            Maikel Alisa
-                                                        </h5>
-                                                        <div class="comment-meta">
-                                                            8:42 PM 1/28/2017<a href="#">Reply</a>
-                                                        </div>
-                                                    </div>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tincidunt aliquam. Aliquam gravida massa at sem </p>
-                                                </div>
-                                            </div>
-                                            <div class="comment mb-0">
-                                                <div class="comment-author">
-                                                    <a href="#">
-                                                        <img src="http://placehold.it/60x60" alt="comments-user">
-                                                    </a>
-                                                </div>
-                                                <div class="comment-content">
-                                                    <div class="comment-meta">
-                                                        <h5>
-                                                            Maikel Alisa
-                                                        </h5>
-                                                        <div class="comment-meta">
-                                                            8:42 PM 1/28/2017<a href="#">Reply</a>
-                                                        </div>
-                                                    </div>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tincidunt aliquam. Aliquam gravida massa at sem </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade active show" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                                            <div class="comment">
-                                                <div class="comment-author">
-                                                    <a href="#">
-                                                        <img src="http://placehold.it/60x60" alt="comments-user">
-                                                    </a>
-                                                </div>
-                                                <div class="comment-content">
-                                                    <div class="comment-meta">
-                                                        <h5>
-                                                            Maikel Alisa
-                                                        </h5>
-                                                        <div class="comment-meta">
-                                                            8:42 PM 1/28/2017<a href="#">Reply</a>
-                                                        </div>
-                                                    </div>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tincidunt aliquam. Aliquam gravida massa at sem </p>
-                                                </div>
-                                            </div>
-                                            <div class="comment">
-                                                <div class="comment-author">
-                                                    <a href="#">
-                                                        <img src="http://placehold.it/60x60" alt="comments-user">
-                                                    </a>
-                                                </div>
-                                                <div class="comment-content">
-                                                    <div class="comment-meta">
-                                                        <h5>
-                                                            Maikel Alisa
-                                                        </h5>
-                                                        <div class="comment-meta">
-                                                            8:42 PM 1/28/2017<a href="#">Reply</a>
-                                                        </div>
-                                                    </div>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tincidunt aliquam. Aliquam gravida massa at sem </p>
-                                                </div>
-                                            </div>
-                                            <div class="comment mb-0">
-                                                <div class="comment-author">
-                                                    <a href="#">
-                                                        <img src="http://placehold.it/60x60" alt="comments-user">
-                                                    </a>
-                                                </div>
-                                                <div class="comment-content">
-                                                    <div class="comment-meta">
-                                                        <h5>
-                                                            Maikel Alisa
-                                                        </h5>
-                                                        <div class="comment-meta">
-                                                            8:42 PM 1/28/2017<a href="#">Reply</a>
-                                                        </div>
-                                                    </div>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tincidunt aliquam. Aliquam gravida massa at sem </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <div class="dashboard-list">
-                            <div class="dashboard-message bdr clearfix ">
-                                <div class="tab-box-2">
-                                    <div class="clearfix mb-30 comments-tr">
-                                        <span>Comments</span>
-                                        <ul class="nav nav-pills float-right" id="pills-tab2" role="tablist">
-                                            <li class="nav-item">
-                                                <a class="nav-link active show" id="pills-profile-tab2" data-toggle="pill" href="#pills-profile2" role="tab" aria-controls="pills-profile" aria-selected="false">Pending</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" id="pills-contact-tab2" data-toggle="pill" href="#pills-contact2" role="tab" aria-controls="pills-contact" aria-selected="true">Approved</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="tab-content" id="pills-tabContent2">
-                                        <div class="tab-pane fade" id="pills-contact2" role="tabpanel" aria-labelledby="pills-contact-tab2">
-                                            <div class="comment">
-                                                <div class="comment-author">
-                                                    <a href="#">
-                                                        <img src="http://placehold.it/60x60" alt="comments-user">
-                                                    </a>
-                                                </div>
-                                                <div class="comment-content">
-                                                    <div class="comment-meta">
-                                                        <h5>Maikel Alisa</h5>
-                                                        <div class="comment-meta">
-                                                            8:42 PM 1/28/2017<a href="#">Reply</a>
-                                                        </div>
-                                                    </div>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tincidunt aliquam. Aliquam gravida massa at sem </p>
-                                                </div>
-                                            </div>
-                                            <div class="comment">
-                                                <div class="comment-author">
-                                                    <a href="#"><img src="http://placehold.it/60x60" alt="comments-user"></a>
-                                                </div>
-                                                <div class="comment-content">
-                                                    <div class="comment-meta">
-                                                        <h5>
-                                                            Maikel Alisa
-                                                        </h5>
-                                                        <div class="comment-meta">
-                                                            8:42 PM 1/28/2017<a href="#">Reply</a>
-                                                        </div>
-                                                    </div>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tincidunt aliquam. Aliquam gravida massa at sem </p>
-                                                </div>
-                                            </div>
-                                            <div class="comment mb-0">
-                                                <div class="comment-author">
-                                                    <a href="#">
-                                                        <img src="http://placehold.it/60x60" alt="comments-user">
-                                                    </a>
-                                                </div>
-                                                <div class="comment-content">
-                                                    <div class="comment-meta">
-                                                        <h5>
-                                                            Maikel Alisa
-                                                        </h5>
-                                                        <div class="comment-meta">
-                                                            8:42 PM 1/28/2017<a href="#">Reply</a>
-                                                        </div>
-                                                    </div>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tincidunt aliquam. Aliquam gravida massa at sem </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade active show" id="pills-profile2" role="tabpanel" aria-labelledby="pills-profile-tab2">
-                                            <div class="comment">
-                                                <div class="comment-author">
-                                                    <a href="#">
-                                                        <img src="http://placehold.it/60x60" alt="comments-user">
-                                                    </a>
-                                                </div>
-                                                <div class="comment-content">
-                                                    <div class="comment-meta">
-                                                        <h5>
-                                                            Maikel Alisa
-                                                        </h5>
-                                                        <div class="comment-meta">
-                                                            8:42 PM 1/28/2017<a href="#">Reply</a>
-                                                        </div>
-                                                    </div>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tincidunt aliquam. Aliquam gravida massa at sem </p>
-                                                </div>
-                                            </div>
-                                            <div class="comment">
-                                                <div class="comment-author">
-                                                    <a href="#">
-                                                        <img src="http://placehold.it/60x60" alt="comments-user">
-                                                    </a>
-                                                </div>
-                                                <div class="comment-content">
-                                                    <div class="comment-meta">
-                                                        <h5>
-                                                            Maikel Alisa
-                                                        </h5>
-                                                        <div class="comment-meta">
-                                                            8:42 PM 1/28/2017<a href="#">Reply</a>
-                                                        </div>
-                                                    </div>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tincidunt aliquam. Aliquam gravida massa at sem </p>
-                                                </div>
-                                            </div>
-                                            <div class="comment mb-0">
-                                                <div class="comment-author">
-                                                    <a href="#">
-                                                        <img src="http://placehold.it/60x60" alt="comments-user">
-                                                    </a>
-                                                </div>
-                                                <div class="comment-content">
-                                                    <div class="comment-meta">
-                                                        <h5>
-                                                            Maikel Alisa
-                                                        </h5>
-                                                        <div class="comment-meta">
-                                                            8:42 PM 1/28/2017<a href="#">Reply</a>
-                                                        </div>
-                                                    </div>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tincidunt aliquam. Aliquam gravida massa at sem </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <p class="sub-banner-2 text-center">© 2018 Theme Vessel. Trademarks and brands are the property of their respective owners.</p>
-                    </div>
-                </div>
+                @yield('content')
             </div>
         </div>
     </div>
@@ -514,6 +185,8 @@
 <script  src="js/jquery.countdown.js"></script>
 <script  src="js/maps.js"></script>
 <script  src="js/app.js"></script>
+
+@yield('js')
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script  src="js/ie10-viewport-bug-workaround.js"></script>

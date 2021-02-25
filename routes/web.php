@@ -24,7 +24,7 @@ Route::post('/login',[\App\Http\Controllers\Auth\LoginController::class,'authent
 
 
 Route::middleware(['auth','role:basic|premium'])->group(function (){
-    Route::get('/dashboard',function (){
-        return view('layouts.dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard',[\App\Http\Controllers\Dashboard\DashboardController::class,'index'])->name('dashboard');
+    Route::get('/my-profile',[\App\Http\Controllers\Dashboard\ProfileController::class,'profile'])->name('my.profile');
+    Route::get('/logout',[\App\Http\Controllers\Auth\LoginController::class,'logout'])->name('logout');
 });

@@ -14,4 +14,9 @@ class UserRepository implements UserInterface
     {
         return $user::create($data)->assignRole('basic');
     }
+
+    public function getUser($user_id)
+    {
+        return User::findOrFail($user_id);
+    }
 }
