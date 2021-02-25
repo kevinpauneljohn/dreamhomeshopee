@@ -130,7 +130,7 @@
                 <div class="dashboard-inner">
                     <h4>Main</h4>
                     <ul>
-                        <li @if(url()->current() === route('dashboard')) class="active" @endif ><a  @if(url()->current() !== route('dashboard')) href="{{route('dashboard')}}" @endif><i class="flaticon-dashboard"></i> Dashboard</a></li>
+                        <li @if(url()->current() === route('dashboard')) class="active" @endif ><a @if(url()->current() !== route('dashboard')) href="{{route('dashboard')}}" @endif><i class="flaticon-dashboard"></i> Dashboard</a></li>
                         <li><a href="messages.html"><i class="flaticon-mail"></i> Messages <span class="nav-tag">6</span></a></li>
                         <li><a href="bookings.html"><i class="flaticon-calendar"></i> Bookings</a></li>
                     </ul>
