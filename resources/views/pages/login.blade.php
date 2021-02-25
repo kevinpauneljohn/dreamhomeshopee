@@ -64,12 +64,13 @@
                         <a href="{{route('register')}}" class="link-btn btn-2 default-bg">Register</a>
                     </div>
                     <div class="clearfix"></div>
-                    <form action="#" method="GET">
+                    <form method="post">
+                        @csrf
                         <div class="form-group form-box">
                             <input type="email" name="email" class="input-text" placeholder="Email Address">
                         </div>
                         <div class="form-group form-box clearfix">
-                            <input type="password" name="Password" class="input-text" placeholder="Password">
+                            <input type="password" name="password" class="input-text" placeholder="Password">
                         </div>
                         <div class="form-group clearfix">
                             <button type="submit" class="btn-md btn-theme float-left">Login</button>

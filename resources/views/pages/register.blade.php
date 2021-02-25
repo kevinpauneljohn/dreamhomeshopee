@@ -64,19 +64,37 @@
                         <a href="{{route('register')}}" class="link-btn btn-2 active-bg">Register</a>
                     </div>
                     <div class="clearfix"></div>
+                    @if(session('success'))
+                    <div class="alert alert-success">
+                        Thank you for registering. Please, proceed to login page
+                    </div>
+                    @endif
                     <form method="post">
                         @csrf
                         <div class="form-group form-box firstname">
-                            <input type="text" name="firstname" id="firstname" class="input-text" placeholder="First Name">
+                            <input type="text" name="firstname" id="firstname" class="input-text" placeholder="First Name" value="{{old('firstname')}}">
+                            @error('firstname')
+                            <p class="error">{{ $message }}</p>
+                            @enderror
                         </div>
+
                         <div class="form-group form-box lastname">
-                            <input type="text" name="lastname" id="lastname" class="input-text" placeholder="Last Name">
+                            <input type="text" name="lastname" id="lastname" class="input-text" placeholder="Last Name" value="{{old('lastname')}}">
+                            @error('lastname')
+                            <p class="error">{{ $message }}</p>
+                            @enderror
                         </div>
                         <div class="form-group form-box email">
-                            <input type="email" name="email" id="email" class="input-text" placeholder="Email Address">
+                            <input type="email" name="email" id="email" class="input-text" placeholder="Email Address" {{old('email')}}>
+                            @error('email')
+                            <p class="error">{{ $message }}</p>
+                            @enderror
                         </div>
                         <div class="form-group form-box clearfix password">
-                            <input type="password" name="password" id="password" class="input-text" placeholder="Password">
+                            <input type="password" name="password" id="password" class="input-text" placeholder="Password" value="{{old('password')}}">
+                            @error('password')
+                            <p class="error">{{ $message }}</p>
+                            @enderror
                         </div>
                         <div class="form-group form-box clearfix">
                             <input type="password" name="password_confirmation" class="input-text" placeholder="Confirm Password">
