@@ -6,43 +6,43 @@
     <meta charset="utf-8">
 
     <!-- External CSS libraries -->
-    <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('css/animate.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap-submenu.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('main/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('main/css/animate.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('main/css/bootstrap-submenu.css')}}">
 
-    <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap-select.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('css/magnific-popup.css')}}">
-    <link rel="stylesheet" href="{{asset('css/leaflet.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('css/map.css')}}" type="text/css">
-    <link rel="stylesheet" type="text/css" href="{{asset('fonts/font-awesome/css/font-awesome.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('/fonts/flaticon/font/flaticon.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('fonts/linearicons/style.css')}}">
-    <link rel="stylesheet" type="text/css"  href="{{asset('css/jquery.mCustomScrollbar.css')}}">
-    <link rel="stylesheet" type="text/css"  href="{{asset('css/dropzone.css')}}">
-    <link rel="stylesheet" type="text/css"  href="{{asset('css/slick.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('main/css/bootstrap-select.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('main/css/magnific-popup.css')}}">
+    <link rel="stylesheet" href="{{asset('main/css/leaflet.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('main/css/map.css')}}" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{asset('main/fonts/font-awesome/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('main/fonts/flaticon/font/flaticon.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('main/fonts/linearicons/style.css')}}">
+    <link rel="stylesheet" type="text/css"  href="{{asset('main/css/jquery.mCustomScrollbar.css')}}">
+    <link rel="stylesheet" type="text/css"  href="{{asset('main/css/dropzone.css')}}">
+    <link rel="stylesheet" type="text/css"  href="{{asset('main/css/slick.css')}}">
 
     <!-- Custom stylesheet -->
-    <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
-    <link rel="stylesheet" type="text/css" id="style_sheet" href="{{asset('css/skins/default.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('main/css/style.css')}}">
+    <link rel="stylesheet" type="text/css" id="style_sheet" href="{{asset('main/css/skins/default.css')}}">
 
     <!-- Favicon icon -->
-    <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" type="image/x-icon" >
+    <link rel="shortcut icon" href="{{asset('main/img/favicon.ico')}}" type="image/x-icon" >
 
     <!-- Google fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link rel="stylesheet" type="text/css" href="{{asset('css/ie10-viewport-bug-workaround.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('main/css/ie10-viewport-bug-workaround.css')}}">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script  src="{{asset('js/ie8-responsive-file-warning.js')}}"></script><![endif]-->
-    <script  src="{{asset('js/ie-emulation-modes-warning.js')}}"></script>
+    <!--[if lt IE 9]><script  src="{{asset('main/js/ie8-responsive-file-warning.js')}}"></script><![endif]-->
+    <script  src="{{asset('main/js/ie-emulation-modes-warning.js')}}"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-    <script  src="{{asset('js/html5shiv.min.js')}}"></script>
-    <script  src="{{asset('js/respond.min.js')}}"></script>
+    <script  src="{{asset('main/js/html5shiv.min.js')}}"></script>
+    <script  src="{{asset('main/js/respond.min.js')}}"></script>
     <![endif]-->
 </head>
 <body>
@@ -57,7 +57,7 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
             <a class="navbar-brand logo" href="index.html">
-                <img src="img/logos/black-logo.png" alt="logo">
+                <span><img src="{{asset('main/img/black-logo.png')}}" alt="logo"></span>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="fa fa-bars"></span>
@@ -238,7 +238,7 @@
         <div class="row">
             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
                 <div class="footer-item clearfix">
-                    <img src="img/logos/logo.png" alt="logo" class="f-logo">
+                    <img src="{{asset('main/img/logos/logo.png')}}" alt="logo" class="f-logo">
                     <div class="text">
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae posuere sapien vitae posuere.</p>
                     </div>
@@ -336,30 +336,30 @@
     </form>
 </div>
 
-<script src="{{asset('js/jquery-2.2.0.min.js')}}"></script>
-<script src="{{asset('js/popper.min.js')}}"></script>
-<script src="{{asset('js/bootstrap.min.js')}}"></script>
-<script  src="{{asset('js/bootstrap-submenu.js')}}"></script>
-<script  src="{{asset('js/rangeslider.js')}}"></script>
-<script  src="{{asset('js/jquery.mb.YTPlayer.js')}}"></script>
-<script  src="{{asset('js/bootstrap-select.min.js')}}"></script>
-<script  src="{{asset('js/jquery.easing.1.3.js')}}"></script>
-<script  src="{{asset('js/jquery.scrollUp.js')}}"></script>
-<script  src="{{asset('js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
-<script  src="{{asset('js/leaflet.js')}}"></script>
-<script  src="{{asset('js/leaflet-providers.js')}}"></script>
-<script  src="{{asset('js/leaflet.markercluster.js')}}"></script>
-<script  src="{{asset('js/dropzone.js')}}"></script>
-<script  src="{{asset('js/slick.min.js')}}"></script>
-<script  src="{{asset('js/jquery.filterizr.js')}}"></script>
-<script  src="{{asset('js/jquery.magnific-popup.min.js')}}"></script>
-<script  src="{{asset('js/jquery.countdown.js')}}"></script>
-<script  src="{{asset('js/maps.js')}}"></script>
-<script  src="{{asset('js/main-app.js')}}"></script>
+<script src="{{asset('main/js/jquery-2.2.0.min.js')}}"></script>
+<script src="{{asset('main/js/popper.min.js')}}"></script>
+<script src="{{asset('main/js/bootstrap.min.js')}}"></script>
+<script  src="{{asset('main/js/bootstrap-submenu.js')}}"></script>
+<script  src="{{asset('main/js/rangeslider.js')}}"></script>
+<script  src="{{asset('main/js/jquery.mb.YTPlayer.js')}}"></script>
+<script  src="{{asset('main/js/bootstrap-select.min.js')}}"></script>
+<script  src="{{asset('main/js/jquery.easing.1.3.js')}}"></script>
+<script  src="{{asset('main/js/jquery.scrollUp.js')}}"></script>
+<script  src="{{asset('main/js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
+<script  src="{{asset('main/js/leaflet.js')}}"></script>
+<script  src="{{asset('main/js/leaflet-providers.js')}}"></script>
+<script  src="{{asset('main/js/leaflet.markercluster.js')}}"></script>
+<script  src="{{asset('main/js/dropzone.js')}}"></script>
+<script  src="{{asset('main/js/slick.min.js')}}"></script>
+<script  src="{{asset('main/js/jquery.filterizr.js')}}"></script>
+<script  src="{{asset('main/js/jquery.magnific-popup.min.js')}}"></script>
+<script  src="{{asset('main/js/jquery.countdown.js')}}"></script>
+<script  src="{{asset('main/js/maps.js')}}"></script>
+<script  src="{{asset('main/js/app.js')}}"></script>
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script  src="js/ie10-viewport-bug-workaround.js"></script>
+<script  src="{{asset('main/js/ie10-viewport-bug-workaround.js')}}"></script>
 <!-- Custom javascript -->
-<script  src="js/ie10-viewport-bug-workaround.js"></script>
+<script  src="{{asset('main/js/ie10-viewport-bug-workaround.js')}}"></script>
 </body>
 </html>

@@ -22,4 +22,9 @@ class ProfileController extends Controller
             'user'  => $this->user->getUser(auth()->user()->id)
         ]);
     }
+
+    public function update(Request $request)
+    {
+        return response()->json(['test' => 'gumagana naman', 'data' => $request->all()]);
+    }
 }
