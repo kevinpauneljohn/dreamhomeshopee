@@ -148,7 +148,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="dashboard-content">
+            <div class="dashboard-content" id="app">
                 @yield('content')
             </div>
         </div>
@@ -184,7 +184,7 @@
 <script  src="js/jquery.magnific-popup.min.js"></script>
 <script  src="js/jquery.countdown.js"></script>
 <script  src="js/maps.js"></script>
-<script  src="js/app.js"></script>
+<script  src="{{asset('js/main-app.js')}}"></script>
 
 @yield('js')
 

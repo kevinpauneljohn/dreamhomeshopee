@@ -154,7 +154,7 @@
 <script  src="js/jquery.magnific-popup.min.js"></script>
 <script  src="js/jquery.countdown.js"></script>
 <script  src="js/maps.js"></script>
-<script  src="js/app.js"></script>
+<script  src="{{asset('js/main-app.js')}}"></script>
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script  src="js/ie10-viewport-bug-workaround.js"></script>

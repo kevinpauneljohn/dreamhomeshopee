@@ -42,31 +42,31 @@
                             <div class="col-lg-6 col-md-6">
                                 <div class="form-group firstname">
                                     <label>First Name</label>
-                                    <input type="text" name="firstname" class="form-control">
+                                    <input type="text" name="firstname" class="form-control" value="{{$user->firstname}}">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6">
                                 <div class="form-group lastname">
                                     <label>Last Name</label>
-                                    <input type="text" name="lastname" class="form-control">
+                                    <input type="text" name="lastname" class="form-control" value="{{$user->lastname}}">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6">
                                 <div class="form-group phone">
                                     <label>Phone</label>
-                                    <input type="text" name="phone" class="form-control">
+                                    <input type="text" name="phone" class="form-control" value="{{$user->phone}}">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6">
                                 <div class="form-group email">
-                                    <label>Email</label>
-                                    <input type="email" name="email" class="form-control">
+                                    <label>Email</label><i> (Cannot be change)</i>
+                                    <input class="form-control" value="{{$user->email}}" disabled="disabled">
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12">
                                 <div class="form-group message">
-                                    <label>Personal info</label>
-                                    <textarea class="form-control" name="message" placeholder="Personal info"></textarea>
+                                    <label class="text-bold">Personal info</label> <i>(maximum of @if(auth()->user()->hasRole('basic')) 100 @elseif(auth()->user()->hasRole('premium')) 1000 @endif Characters only)</i>
+                                    <textarea class="form-control" name="message" placeholder="Personal info">{{$user->description}}</textarea>
                                 </div>
                             </div>
                         </div>
