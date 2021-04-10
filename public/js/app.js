@@ -1922,26 +1922,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "PersonalInfoComponent",
   props: ['userData'],
   data: function data() {
     return {
-      data: {
+      user: {
         firstname: this.userData.firstname,
         lastname: this.userData.lastname,
         phone: this.userData.phone,
         description: this.userData.description,
         email: this.userData.email
-      }
+      },
+      errors: {}
     };
   },
   methods: {
-    updateUser: function updateUser() {
-      console.log(this.data);
+    submit: function submit() {
+      var _this = this;
+
+      this.errors = {};
+      axios.post('/my-profile/update', this.user).then(function (response) {
+        console.log(response.data);
+      })["catch"](function (error) {
+        if (error.response.status === 422) {
+          _this.errors = error.response.data.errors || {};
+        }
+      });
     }
-  },
-  mounted: function mounted() {}
+  }
 });
 
 /***/ }),
@@ -37612,7 +37624,15 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "form",
-    { attrs: { method: "post", enctype: "multipart/form-data" } },
+    {
+      attrs: { method: "post", enctype: "multipart/form-data" },
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.submit($event)
+        }
+      }
+    },
     [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-lg-6 col-md-6" }, [
@@ -37624,22 +37644,28 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.data.firstname,
-                  expression: "data.firstname"
+                  value: _vm.user.firstname,
+                  expression: "user.firstname"
                 }
               ],
               staticClass: "form-control",
-              attrs: { type: "text" },
-              domProps: { value: _vm.data.firstname },
+              attrs: { name: "firstname", type: "text" },
+              domProps: { value: _vm.user.firstname },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.$set(_vm.data, "firstname", $event.target.value)
+                  _vm.$set(_vm.user, "firstname", $event.target.value)
                 }
               }
-            })
+            }),
+            _vm._v(" "),
+            _vm.errors && _vm.errors.firstname
+              ? _c("div", { staticClass: "text-danger" }, [
+                  _vm._v(_vm._s(_vm.errors.firstname[0]))
+                ])
+              : _vm._e()
           ])
         ]),
         _vm._v(" "),
@@ -37652,22 +37678,28 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.data.lastname,
-                  expression: "data.lastname"
+                  value: _vm.user.lastname,
+                  expression: "user.lastname"
                 }
               ],
               staticClass: "form-control",
-              attrs: { type: "text" },
-              domProps: { value: _vm.data.lastname },
+              attrs: { name: "lastname", type: "text" },
+              domProps: { value: _vm.user.lastname },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.$set(_vm.data, "lastname", $event.target.value)
+                  _vm.$set(_vm.user, "lastname", $event.target.value)
                 }
               }
-            })
+            }),
+            _vm._v(" "),
+            _vm.errors && _vm.errors.lastname
+              ? _c("div", { staticClass: "text-danger" }, [
+                  _vm._v(_vm._s(_vm.errors.lastname[0]))
+                ])
+              : _vm._e()
           ])
         ]),
         _vm._v(" "),
@@ -37680,22 +37712,28 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.data.phone,
-                  expression: "data.phone"
+                  value: _vm.user.phone,
+                  expression: "user.phone"
                 }
               ],
               staticClass: "form-control",
-              attrs: { type: "text" },
-              domProps: { value: _vm.data.phone },
+              attrs: { name: "phone", type: "text" },
+              domProps: { value: _vm.user.phone },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.$set(_vm.data, "phone", $event.target.value)
+                  _vm.$set(_vm.user, "phone", $event.target.value)
                 }
               }
-            })
+            }),
+            _vm._v(" "),
+            _vm.errors && _vm.errors.phone
+              ? _c("div", { staticClass: "text-danger" }, [
+                  _vm._v(_vm._s(_vm.errors.phone[0]))
+                ])
+              : _vm._e()
           ])
         ]),
         _vm._v(" "),
@@ -37709,19 +37747,19 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.data.email,
-                  expression: "data.email"
+                  value: _vm.user.email,
+                  expression: "user.email"
                 }
               ],
               staticClass: "form-control",
               attrs: { disabled: "disabled" },
-              domProps: { value: _vm.data.email },
+              domProps: { value: _vm.user.email },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.$set(_vm.data, "email", $event.target.value)
+                  _vm.$set(_vm.user, "email", $event.target.value)
                 }
               }
             })
@@ -37739,47 +37777,44 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.data.description,
-                  expression: "data.description"
+                  value: _vm.user.description,
+                  expression: "user.description"
                 }
               ],
               staticClass: "form-control",
               attrs: { placeholder: "Personal info" },
-              domProps: { value: _vm.data.description },
+              domProps: { value: _vm.user.description },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.$set(_vm.data, "description", $event.target.value)
+                  _vm.$set(_vm.user, "description", $event.target.value)
                 }
               }
             })
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-lg-12" }, [
-          _c("div", { staticClass: "send-btn" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-md button-theme",
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    return _vm.updateUser($event)
-                  }
-                }
-              },
-              [_vm._v("Change Password")]
-            )
-          ])
-        ])
+        _vm._m(0)
       ])
     ]
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-12" }, [
+      _c("div", { staticClass: "send-btn" }, [
+        _c("button", { staticClass: "btn btn-md button-theme" }, [
+          _vm._v("Update")
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 

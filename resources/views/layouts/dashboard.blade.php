@@ -67,7 +67,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto d-lg-none d-xl-none">
                     <li class="nav-item dropdown active">
-                        <a href="dashboard.html" class="nav-link">Dashboard</a>
+                        <a href="{{route('dashboard')}}" class="nav-link">Dashboard</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a href="messages.html" class="nav-link">Messages</a>
@@ -88,7 +88,7 @@
                         <a href="submit-property.html" class="nav-link">Submit Property</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a href="my-profile.html" class="nav-link">My Profile</a>
+                        <a href="{{route('my.profile')}}" class="nav-link">My Profile</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a href="index.html" class="nav-link">Logout</a>

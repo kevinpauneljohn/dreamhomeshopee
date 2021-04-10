@@ -25,6 +25,11 @@ class ProfileController extends Controller
 
     public function update(Request $request)
     {
-        return response()->json(['test' => 'gumagana naman', 'data' => $request->all()]);
+        $this->validate($request,[
+            'firstname' => 'required|string',
+            'lastname' => 'required|string',
+        ]);
+
+        return response()->json($request->all());
     }
 }
